@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingTop="10dp"
+    android:paddingHorizontal="15dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="@drawable/rectangular_shape"
+        android:paddingVertical="10dp"
+        android:outlineSpotShadowColor="@color/colorAccent"
+        android:backgroundTint="#FFC0C0"
+        android:paddingHorizontal="10dp">
+
+        <TextView
+            android:id="@+id/item_title_list"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/title_list"
+            android:textSize="18sp"
+            android:textColor="@android:color/black"
+            android:textStyle="bold"
+            android:textColorLink="@color/colorAccent"
+            android:layout_marginBottom="5sp"/>
+
+        <TextView
+            android:id="@+id/item_note"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/additional_note"
+            android:textSize="15sp" />
+
+        <TextView
+            android:id="@+id/item_due_time"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/due_time"
+            android:textSize="15sp"
+            android:textColor="#FF0000"/>
+
+    </LinearLayout>
+</RelativeLayout>
