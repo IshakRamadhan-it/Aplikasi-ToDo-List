@@ -73,5 +73,16 @@ class MainActivity : AppCompatActivity() {
         }
         builder.show()
     }
+    private fun updateList(toDoList: ToDoList){
+        val addIntent = Intent(this, UpdateListActivity::class.java)
+            .putExtra("EXTRA_LIST", toDoList)
+            .putExtra(UpdateListActivity.EXTRA_TITLE_UPDATE, toDoList.title)
+            .putExtra(UpdateListActivity.EXTRA_DATE_UPDATE, toDoList.strDueDate)
+            .putExtra(UpdateListActivity.EXTRA_TIME_UPDATE, toDoList.strDueHour)
+            .putExtra(UpdateListActivity.EXTRA_NOTE_UPDATE, toDoList.note)
+            .putExtra(UpdateListActivity.EXTRA_IS_FINISHED_UPDATE, toDoList.isFinished)
+
+        startActivity(addIntent)
+    }
 
 }
