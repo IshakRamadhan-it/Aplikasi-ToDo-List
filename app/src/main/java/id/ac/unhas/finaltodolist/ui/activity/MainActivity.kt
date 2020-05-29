@@ -56,6 +56,7 @@ class MainActivity : AppCompatActivity() {
                 0 -> {
                 }
                 1 -> {
+                    updateList(toDoList)
                 }
                 2 -> {
                     alert.setTitle("Hapus Tugas ?")
