@@ -3,6 +3,7 @@ package id.ac.unhas.finaltodolist.ui.activity
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.TextView
 import androidx.appcompat.app.AlertDialog
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -73,6 +74,26 @@ class MainActivity : AppCompatActivity() {
             }
         }
         builder.show()
+    }
+    private fun listDetails(alert: AlertDialog.Builder, toDoList: ToDoList){
+        val inflater = layoutInflater
+        val dialogView = inflater.inflate(R.layout.item_details, null)
+
+        val title: TextView = dialogView.findViewById(R.id.title)
+        val createdDate: TextView = dialogView.findViewById(R.id.created_date_content)
+        val dueTime: TextView = dialogView.findViewById(R.id.due_time_content)
+        val note: TextView = dialogView.findViewById(R.id.note_content)
+
+        title.text = toDoList.title
+        createdDate.text = toDoList.strCreatedDate
+        dueTime.text = "${toDoList.strDueDate}, ${toDoList.strDueHour}"
+        note.text = toDoList.note
+
+        alert.setView(dialogView)
+            .setNeutralButton("OKE"){dialog, _ ->
+                dialog.dismiss()
+            }
+            .show()
     }
     private fun updateList(toDoList: ToDoList){
         val addIntent = Intent(this, UpdateListActivity::class.java)
