@@ -4,17 +4,20 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.appcompat.app.AlertDialog
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import id.ac.unhas.finaltodolist.R
 import id.ac.unhas.finaltodolist.db.todolist.ToDoList
+import id.ac.unhas.finaltodolist.ui.adapter.ToDoListAdapter
 import id.ac.unhas.finaltodolist.ui.view_model.ToDoListViewModel
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
-
-    private lateinit var floatingActionButton: FloatingActionButton
     private lateinit var toDoListViewModel: ToDoListViewModel
+    private lateinit var toDoListAdapter: ToDoListAdapter
+    private lateinit var floatingActionButton: FloatingActionButton
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -23,6 +26,18 @@ class MainActivity : AppCompatActivity() {
         floatingActionButton = findViewById(R.id.fab)
 
         listRV.layoutManager = LinearLayoutManager(this)
+        toDoListAdapter =
+            ToDoListAdapter(this) { toDoList, i ->
+                showAlertMenu(toDoList)
+            }
+        listRV.adapter = toDoListAdapter
+
+        toDoListViewModel = ViewModelProvider(this).get(ToDoListViewModel::class.java)
+
+        toDoListViewModel.getLists()?.observe(this, Observer {
+            toDoListAdapter.setLists(it)
+        })
+
         floatingActionButton.setOnClickListener{
             addList()
         }
