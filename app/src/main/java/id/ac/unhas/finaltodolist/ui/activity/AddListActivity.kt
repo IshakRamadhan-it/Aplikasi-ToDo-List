@@ -7,6 +7,7 @@ import android.os.Bundle
 import android.view.MenuItem
 import android.widget.Button
 import android.widget.EditText
+import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import id.ac.unhas.finaltodolist.R
 import id.ac.unhas.todolist.db.todolist.ToDoList
@@ -98,13 +99,21 @@ class AddListActivity : AppCompatActivity() {
         val createdDate = Converter.dateToInt(current)
 
         val strDueDate = editTextDate.text.toString().trim()
-        val dueDate = Converter.stringDateToInt(strDueDate)
 
         val strDueHour = editTextTime.text.toString().trim()
-        val dueHour = Converter.stringTimeToInt(strDueHour)
 
         val title = editTextTitle.text.toString().trim()
         val note = editTextNote.text.toString().trim()
+
+        if (title.isEmpty()) {
+            toast("Judul Tidak Boleh Kosong", Toast.LENGTH_LONG)
+        } else if (strDueDate.isEmpty()) {
+            toast("Tanggal Tidak Boleh Kosong", Toast.LENGTH_LONG)
+        } else if (strDueHour.isEmpty()) {
+            toast("Waktu Tidak Boleh Kosong", Toast.LENGTH_LONG)
+        } else {
+            val dueDate = Converter.stringDateToInt(strDueDate)
+            val dueHour = Converter.stringTimeToInt(strDueHour)
 
             toDoListViewModel.insertList(
                 ToDoList(
@@ -124,3 +133,8 @@ class AddListActivity : AppCompatActivity() {
         }
 
     }
+
+    private fun toast(message: String, length: Int = Toast.LENGTH_LONG) {
+        Toast.makeText(this, message, length).show()
+    }
+}
