@@ -10,9 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".dbase.ToDoList"></activity>
-        <activity android:name=".UpdateListActivity" />
-        <activity android:name=".AddListActivity" />
-        <activity android:name=".MainActivity">
+        <activity android:name=".ui.activity.UpdateListActivity" />
+        <activity android:name=".ui.activity.AddListActivity" />
+        <activity android:name=".ui.activity.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

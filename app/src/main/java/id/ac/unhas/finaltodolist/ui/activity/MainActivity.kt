@@ -1,13 +1,12 @@
-package id.ac.unhas.finaltodolist
+package id.ac.unhas.finaltodolist.ui.activity
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.appcompat.app.AlertDialog
-import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.floatingactionbutton.FloatingActionButton
+import id.ac.unhas.finaltodolist.R
 import id.ac.unhas.todolist.db.todolist.ToDoList
 import id.ac.unhas.todolist.ui.view_model.ToDoListViewModel
 import kotlinx.android.synthetic.main.activity_main.*
