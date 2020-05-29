@@ -3,6 +3,7 @@ package id.ac.unhas.finaltodolist.ui.activity
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.MenuItem
 import android.widget.TextView
 import androidx.appcompat.app.AlertDialog
 import androidx.lifecycle.Observer
@@ -42,10 +43,60 @@ class MainActivity : AppCompatActivity() {
         floatingActionButton.setOnClickListener{
             addList()
         }
+    }override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when(item.itemId){
+            R.id.sort_list -> sortList()
+        }
+        return super.onOptionsItemSelected(item)
     }
+
     private fun addList() {
         val addIntent = Intent(this, AddListActivity::class.java)
         startActivity(addIntent)
+    }private fun sortList(){
+        val items = arrayOf("Batas tanggal terakhir", "\n" +
+                "Tanggal dibuat")
+
+        val builder = AlertDialog.Builder(this)
+        val alert = AlertDialog.Builder(this)
+        builder.setTitle("Urutan Berdasarkan")
+            .setItems(items){dialog, which ->
+                when(which){
+                    0 -> {
+                        alert.setTitle(items[which])
+                            .setPositiveButton("Urutan Naik"){dialog, _ ->
+                                toDoListViewModel.getLists()?.observe(this, Observer {
+                                    toDoListAdapter.setLists(it)
+                                })
+                                dialog.dismiss()
+                            }
+                            .setNegativeButton("Urutan Turun"){dialog, _ ->
+                                toDoListViewModel.sortByDueDateDescending()?.observe(this, Observer {
+                                    toDoListAdapter.setLists(it)
+                                })
+                                dialog.dismiss()
+                            }
+                            .show()
+                    }
+                    1 -> {
+                        alert.setTitle(items[which])
+                            .setPositiveButton("Urutan Naik"){dialog, _ ->
+                                toDoListViewModel.sortByCreatedDateAscending()?.observe(this, Observer {
+                                    toDoListAdapter.setLists(it)
+                                })
+                                dialog.dismiss()
+                            }
+                            .setNegativeButton("Urutan Turun"){dialog, _ ->
+                                toDoListViewModel.sortByCreatedDateDescending()?.observe(this, Observer {
+                                    toDoListAdapter.setLists(it)
+                                })
+                                dialog.dismiss()
+                            }
+                            .show()
+                    }
+                }
+            }
+        builder.show()
     }
     private fun showAlertMenu(toDoList: ToDoList){
         val items = arrayOf("Info", "Ubah", "Hapus")
@@ -55,6 +106,7 @@ class MainActivity : AppCompatActivity() {
         builder.setItems(items){ dialog, which ->
             when(which){
                 0 -> {
+                    listDetails(alert, toDoList)
                 }
                 1 -> {
                     updateList(toDoList)
