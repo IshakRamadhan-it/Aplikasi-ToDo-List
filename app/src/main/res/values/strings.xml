@@ -1,3 +1,24 @@
 <resources>
-    <string name="app_name">FinalToDoList</string>
+    <string name="app_name">Aplikasi ToDoList</string>
+    <string name="add">Tambahkan</string>
+    <string name="title_list">Judul</string>
+    <string name="additional_note">Tambahan note</string>
+    <string name="due_date">Tanggal Tenggat</string>
+    <string name="add_title">Tambahkan Tugas</string>
+    <string name="save">Simpan</string>
+    <string name="update_title">Perbarui Tugas</string>
+    <string name="update">Perbarui</string>
+    <string name="cancel">Batalkan</string>
+    <string name="task_finished">Selesai?</string>
+    <string name="date_not_set">Tanggal Belum Diatur</string>
+    <string name="time_not_set">Waktu Belum Diatur</string>
+    <string name="due_time">Waktu</string>
+    <string name="comma">,\u0020</string>
+    <string name="sort">Sort</string>
+    <string name="search">Cari</string>
+    <string name="created_date">Tanggal Dibuat:\u0020</string>
+    <string name="created_date_content">Tanggal Konten Dibuat</string>
+    <string name="due_time_content">Due time content</string>
+    <string name="due_time_u0020">Waktu:\u0020</string>
+    <string name="additional_note_u0020">Catatan tambahan:\u0020</string>
 </resources>
