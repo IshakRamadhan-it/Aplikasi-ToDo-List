@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".UpdateListActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="20dp">
+
+        <TextView
+            android:id="@+id/title_list"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/title_list"
+            android:textSize="20sp"
+            android:textStyle="bold"/>
+
+        <EditText
+            android:id="@+id/title_content"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textCapSentences|textAutoCorrect"
+            android:hint="@string/title_list" />
+
+        <TextView
+            android:id="@+id/due_date"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/due_date"
+            android:textSize="20sp"
+            android:textStyle="bold"/>
+
+        <EditText
+            android:id="@+id/due_date_content"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="date"
+            android:hint="@string/date_not_set"
+            android:clickable="true"
+            android:longClickable="false"
+            android:focusable="false"/>
+
+        <EditText
+            android:id="@+id/due_time_content"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="time"
+            android:layout_marginBottom="15dp"
+            android:hint="@string/time_not_set"
+            android:clickable="true"
+            android:longClickable="false"
+            android:focusable="false"/>
+
+        <TextView
+            android:id="@+id/list_note"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/additional_note"
+            android:textSize="15sp"/>
+
+        <EditText
+            android:id="@+id/note_content"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textCapSentences|textAutoCorrect"
+            android:hint="@string/additional_note"
+            android:layout_marginBottom="15dp"/>
+
+        <CheckBox
+            android:id="@+id/checkbox_is_finished"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="15dp"
+            android:text="@string/task_finished" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal">
+
+            <Button
+                android:id="@+id/btn_cancel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_margin="15dp"
+                android:background="@color/colorPrimary"
+                android:text="@string/cancel"
+                android:textColor="@android:color/widget_edittext_dark"
+                android:textSize="15sp" />
+
+            <Button
+                android:id="@+id/btn_update"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_margin="15dp"
+                android:background="@color/colorPrimary"
+                android:text="@string/update"
+                android:textColor="@android:color/widget_edittext_dark"
+                android:textSize="15sp" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+</RelativeLayout>
