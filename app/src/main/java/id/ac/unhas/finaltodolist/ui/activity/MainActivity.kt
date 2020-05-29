@@ -3,6 +3,7 @@ package id.ac.unhas.finaltodolist.ui.activity
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.Menu
 import android.view.MenuItem
 import android.widget.TextView
 import androidx.appcompat.app.AlertDialog
@@ -10,8 +11,8 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.floatingactionbutton.FloatingActionButton
-import id.ac.unhas.finaltodolist.R
 import id.ac.unhas.finaltodolist.db.todolist.ToDoList
+import id.ac.unhas.finaltodolist.R
 import id.ac.unhas.finaltodolist.ui.adapter.ToDoListAdapter
 import id.ac.unhas.finaltodolist.ui.view_model.ToDoListViewModel
 import kotlinx.android.synthetic.main.activity_main.*
@@ -43,17 +44,63 @@ class MainActivity : AppCompatActivity() {
         floatingActionButton.setOnClickListener{
             addList()
         }
-    }override fun onOptionsItemSelected(item: MenuItem): Boolean {
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        val inflater = menuInflater
+        inflater.inflate(R.menu.main_menu, menu)
+
+        searchList(menu)
+        return super.onCreateOptionsMenu(menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when(item.itemId){
             R.id.sort_list -> sortList()
         }
         return super.onOptionsItemSelected(item)
     }
 
-    private fun addList() {
+    private fun addList(){
         val addIntent = Intent(this, AddListActivity::class.java)
         startActivity(addIntent)
-    }private fun sortList(){
+    }
+
+    private fun searchList(menu: Menu?){
+        val item = menu?.findItem(R.id.search_list)
+
+        val searchView = item?.actionView as androidx.appcompat.widget.SearchView?
+        searchView?.isSubmitButtonEnabled = true
+
+        searchView?.setOnQueryTextListener(
+            object: androidx.appcompat.widget.SearchView.OnQueryTextListener{
+                override fun onQueryTextSubmit(query: String?): Boolean {
+                    if(query != null){
+                        getItemsFromDb(query)
+                    }
+                    return true
+                }
+
+                override fun onQueryTextChange(newText: String?): Boolean {
+                    if(newText != null){
+                        getItemsFromDb(newText)
+                    }
+                    return true
+                }
+            }
+        )
+    }
+
+    private fun getItemsFromDb(searchText: String){
+        var searchText = searchText
+        searchText = "%$searchText%"
+
+        toDoListViewModel.searchResult(searchText)?.observe(this, Observer {
+            toDoListAdapter.setLists(it)
+        })
+    }
+
+    private fun sortList(){
         val items = arrayOf("Batas tanggal terakhir", "\n" +
                 "Tanggal dibuat")
 
@@ -98,6 +145,7 @@ class MainActivity : AppCompatActivity() {
             }
         builder.show()
     }
+
     private fun showAlertMenu(toDoList: ToDoList){
         val items = arrayOf("Info", "Ubah", "Hapus")
 
@@ -127,6 +175,7 @@ class MainActivity : AppCompatActivity() {
         }
         builder.show()
     }
+
     private fun listDetails(alert: AlertDialog.Builder, toDoList: ToDoList){
         val inflater = layoutInflater
         val dialogView = inflater.inflate(R.layout.item_details, null)
@@ -147,6 +196,7 @@ class MainActivity : AppCompatActivity() {
             }
             .show()
     }
+
     private fun updateList(toDoList: ToDoList){
         val addIntent = Intent(this, UpdateListActivity::class.java)
             .putExtra("EXTRA_LIST", toDoList)
@@ -158,5 +208,4 @@ class MainActivity : AppCompatActivity() {
 
         startActivity(addIntent)
     }
-
 }
