@@ -1,4 +1,4 @@
-package id.ac.unhas.todolist.ui.activity
+package id.ac.unhas.finaltodolist.ui.activity
 
 import android.app.DatePickerDialog
 import android.app.TimePickerDialog
@@ -10,9 +10,9 @@ import android.widget.EditText
 import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import id.ac.unhas.finaltodolist.R
-import id.ac.unhas.todolist.db.todolist.ToDoList
-import id.ac.unhas.todolist.ui.Converter
-import id.ac.unhas.todolist.ui.view_model.ToDoListViewModel
+import id.ac.unhas.finaltodolist.db.todolist.ToDoList
+import id.ac.unhas.finaltodolist.ui.Converter
+import id.ac.unhas.finaltodolist.ui.view_model.ToDoListViewModel
 import java.text.SimpleDateFormat
 import java.time.ZoneId
 import java.time.ZonedDateTime

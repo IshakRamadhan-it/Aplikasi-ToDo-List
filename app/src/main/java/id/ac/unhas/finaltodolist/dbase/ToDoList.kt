@@ -1,4 +1,4 @@
-package id.ac.unhas.todolist.db.todolist
+package id.ac.unhas.finaltodolist.db.todolist
 
 import android.os.Parcelable
 import androidx.room.ColumnInfo

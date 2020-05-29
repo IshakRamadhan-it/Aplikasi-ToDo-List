@@ -1,10 +1,10 @@
-package id.ac.unhas.todolist.ui.view_model
+package id.ac.unhas.finaltodolist.ui.view_model
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
-import id.ac.unhas.todolist.db.todolist.ToDoList
-import id.ac.unhas.todolist.db.todolist.ToDoListRepo
+import id.ac.unhas.finaltodolist.db.todolist.ToDoList
+import id.ac.unhas.finaltodolist.db.todolist.ToDoListRepo
 
 class ToDoListViewModel (application: Application): AndroidViewModel(application){
     private var toDoListRepo = ToDoListRepo(application)

@@ -7,8 +7,8 @@ import androidx.appcompat.app.AlertDialog
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import id.ac.unhas.finaltodolist.R
-import id.ac.unhas.todolist.db.todolist.ToDoList
-import id.ac.unhas.todolist.ui.view_model.ToDoListViewModel
+import id.ac.unhas.finaltodolist.db.todolist.ToDoList
+import id.ac.unhas.finaltodolist.ui.view_model.ToDoListViewModel
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {

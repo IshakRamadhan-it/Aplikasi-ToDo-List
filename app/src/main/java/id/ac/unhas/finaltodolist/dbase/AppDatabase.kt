@@ -1,11 +1,11 @@
-package id.ac.unhas.todolist.db
+package id.ac.unhas.finaltodolist.db
 
 import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
-import id.ac.unhas.todolist.db.todolist.ToDoList
-import id.ac.unhas.todolist.db.todolist.ToDoListDao
+import id.ac.unhas.finaltodolist.db.todolist.ToDoList
+import id.ac.unhas.finaltodolist.db.todolist.ToDoListDao
 
 @Database(entities = [ToDoList::class], exportSchema = false, version = 1)
 abstract class AppDatabase : RoomDatabase(){

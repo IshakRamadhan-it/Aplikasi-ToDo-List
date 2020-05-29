@@ -1,8 +1,8 @@
-package id.ac.unhas.todolist.db.todolist
+package id.ac.unhas.finaltodolist.db.todolist
 
 import android.app.Application
 import androidx.lifecycle.LiveData
-import id.ac.unhas.todolist.db.AppDatabase
+import id.ac.unhas.finaltodolist.db.AppDatabase
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
